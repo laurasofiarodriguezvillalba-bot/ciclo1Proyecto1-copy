@@ -1,0 +1,21 @@
+#BlueJ class context
+#Sun Aug 23 18:18:28 COT 2026
+comment0.target=Wheel
+comment0.text=\r\n Represents a wheel of the slot machine.\r\n A wheel contains an ordered list of symbols.\r\n
+comment1.target=Wheel()
+comment1.text=\r\n Creates an empty wheel.\r\n
+comment2.params=symbol
+comment2.target=void addSymbol(Symbol)
+comment2.text=\r\n Adds a symbol at the end of the wheel.\r\n\r\n @param symbol the symbol to add\r\n
+comment3.target=void spin()
+comment3.text=\r\n Spins the wheel one position.\r\n
+comment4.target=int getCurrent()
+comment4.text=\r\n Returns the current position of the wheel.\r\n\r\n @return the current position\r\n
+comment5.params=pos
+comment5.target=Symbol getSymbol(int)
+comment5.text=\r\n Returns the symbol at the specified position.\r\n\r\n @param pos the desired position\r\n @return the symbol at the position\r\n
+comment6.target=void makeVisible()
+comment6.text=\r\n Makes all symbols of the wheel visible.\r\n
+comment7.target=void makeInvisible()
+comment7.text=\r\n Makes all symbols of the wheel invisible.\r\n
+numComments=8
