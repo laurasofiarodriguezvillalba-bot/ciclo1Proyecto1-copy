@@ -34,6 +34,10 @@ public class SlotMachine {
         wheel.addSymbol(i + 1, symbols.get(i));
         }
         wheels.add(pos - 1, wheel);
+        // Si la máquina ya está visible, hacemos visible la nueva rueda
+        if (visible) {
+            wheel.makeVisible();
+        }
         operationOk = true;
     }
 
