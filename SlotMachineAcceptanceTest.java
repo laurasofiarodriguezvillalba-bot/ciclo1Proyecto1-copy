@@ -2,7 +2,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class SlotMachineAcceptanceTest {
-
     @Test
     public void acceptanceTest1() {
         // 1. Create the machine
