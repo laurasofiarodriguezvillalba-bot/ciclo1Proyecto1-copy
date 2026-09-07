@@ -20,7 +20,6 @@ public class SlotMachine {
         if (pos < 1) {
             pos = 1;
         }
-
         if (pos > wheels.size() + 1) {
             pos = wheels.size() + 1;
         }
