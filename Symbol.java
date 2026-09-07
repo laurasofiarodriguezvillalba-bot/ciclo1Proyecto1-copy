@@ -1,12 +1,12 @@
 public class Symbol {
     private String color;
 
-    //Crea un simbolo con un color
+    //Create a symbol with a color
     public Symbol(String color) {
         this.color = color;
     }
 
-    //Retorna el color del simbolo
+    //Returns the symbol color
     public String getColor() {
         return color;
     }
