@@ -23,7 +23,6 @@ public class SlotMachine {
         if (pos > wheels.size() + 1) {
             pos = wheels.size() + 1;
         }
-        
         int x = 70 + ((pos - 1)*60);
         int y = 50;
         Wheel wheel = new Wheel(x, y);
