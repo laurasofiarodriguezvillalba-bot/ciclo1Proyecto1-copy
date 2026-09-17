@@ -14,6 +14,21 @@ public class SlotMachine {
         visible = false;
         operationOk = true;
     }
+    public SlotMachine(int n){
+        wheels = new ArrayList<Wheel>();
+        symbols = new ArrayList<Symbol>();
+        visible = false;
+        operationOk = true;
+        String[] color = {"red","blue","green","yellow"};
+        for (int i=0;i<n;i++){
+            int x = 70+(i*60);
+            int y = 50;
+            Wheel wheel = new Wheel(x,y);
+            for (int j=0;j<n;j++){
+                Symbol symbol = new Symbol(color[i]);
+            }
+        }
+    }
 
     // Add a wheel in the indicated position.
     public void addWheel(int pos) {
