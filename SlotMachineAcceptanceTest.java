@@ -155,7 +155,7 @@ public class SlotMachineAcceptanceTest {
             machine.configuration()
         );
     }
-     @Test
+    @Test
     public void acceptanceShouldSolveMarathon() {
         SlotMachineContest contest = new SlotMachineContest();
         int[][] solution = contest.solve(3);
