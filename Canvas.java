@@ -26,7 +26,7 @@ public class Canvas{
      */
     public static Canvas getCanvas(){
         if(canvasSingleton == null) {
-            canvasSingleton = new Canvas("BlueJ Shapes Demo", 300, 300, 
+            canvasSingleton = new Canvas("BlueJ Shapes Demo", 1000, 1000, 
                                          Color.white);
         }
         canvasSingleton.setVisible(true);
@@ -108,6 +108,15 @@ public class Canvas{
         shapes.remove(referenceObject);
         redraw();
     }
+    
+    /**
+     * Erases all shapes from the canvas.
+     */
+    public void eraseAll() {
+        objects.clear();
+        shapes.clear();
+        redraw();
+    }
 
     /**
      * Set the foreground colour of the Canvas.
@@ -128,6 +137,34 @@ public class Canvas{
             graphic.setColor(Color.magenta);
         else if(colorString.equals("white"))
             graphic.setColor(Color.white);
+        else if(colorString.equals("orange"))
+            graphic.setColor(Color.orange);
+        else if(colorString.equals("pink"))
+            graphic.setColor(Color.pink);
+        else if(colorString.equals("gray"))
+            graphic.setColor(Color.gray);
+        else if(colorString.equals("cyan"))
+            graphic.setColor(Color.cyan);
+        else if(colorString.equals("lightGray"))
+            graphic.setColor(Color.lightGray);
+        else if(colorString.equals("darkGray"))
+            graphic.setColor(Color.darkGray);
+        else if(colorString.equals("purple"))
+            graphic.setColor(new Color(128, 0, 128));
+        else if(colorString.equals("brown"))
+            graphic.setColor(new Color(139, 69, 19));
+        else if(colorString.equals("lime"))
+            graphic.setColor(new Color(50, 205, 50));
+        else if(colorString.equals("navy"))
+            graphic.setColor(new Color(0, 0, 128));
+        else if(colorString.equals("teal"))
+            graphic.setColor(new Color(0, 128, 128));
+        else if(colorString.equals("olive"))
+            graphic.setColor(new Color(128, 128, 0));
+        else if(colorString.equals("maroon"))
+            graphic.setColor(new Color(128, 0, 0));
+        else if(colorString.equals("silver"))
+            graphic.setColor(new Color(192, 192, 192));
         else
             graphic.setColor(Color.black);
     }
