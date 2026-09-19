@@ -7,54 +7,77 @@ public class SlotMachine {
     private boolean visible;
     private boolean operationOk;
 
-    //Create an empty machine
+    //Crea una maquina vacia
     public SlotMachine() {
         wheels = new ArrayList<Wheel>();
         symbols = new ArrayList<Symbol>();
         visible = false;
         operationOk = true;
     }
-    public SlotMachine(int n){
+    
+    public SlotMachine(int n) {
         wheels = new ArrayList<Wheel>();
         symbols = new ArrayList<Symbol>();
         visible = false;
         operationOk = true;
-        String[] color = {"red","blue","green","yellow"};
-        for (int i=0;i<n;i++){
-            int x = 70+(i*60);
+    
+        String[] colors = {"red","blue","green","yellow","orange","magenta","pink","black","white","gray",
+            "cyan","lightGray","darkGray","purple","brown","lime","navy","teal","olive","maroon","silver"};
+    
+        // Create n symbols
+        for (int i = 0; i < n; i++) {
+            Symbol symbol = new Symbol(colors[i]);
+            symbols.add(symbol);
+        }
+    
+        // Create n wheels
+        for (int i = 0; i < n; i++) {
+            int x = 70 + (i * 60);
             int y = 50;
-            Wheel wheel = new Wheel(x,y);
-            for (int j=0;j<n;j++){
-                Symbol symbol = new Symbol(color[i]);
+    
+            Wheel wheel = new Wheel(x, y);
+    
+            // Add the same symbols to every wheel
+            for (int j = 0; j < symbols.size(); j++) {
+                wheel.addSymbol(j + 1, symbols.get(j));
             }
+    
+            // Choose a random initial position
+            int position = (int)(Math.random() * n) + 1;
+            wheel.placeSymbol(symbols.get(position - 1));
+    
+            wheels.add(wheel);
         }
     }
 
-    // Add a wheel in the indicated position.
+    // Agrega una rueda en la posición indicada
     public void addWheel(int pos) {
         if (pos < 1) {
             pos = 1;
         }
+
         if (pos > wheels.size() + 1) {
             pos = wheels.size() + 1;
         }
+        
         int x = 70 + ((pos - 1)*60);
         int y = 50;
         Wheel wheel = new Wheel(x, y);
-
-        // The new wheel receives all existing symbols
+        
+        // La nueva rueda recibe todos los símbolos existentes
         for (int i = 0; i < symbols.size(); i++) {
         wheel.addSymbol(i + 1, symbols.get(i));
         }
         wheels.add(pos - 1, wheel);
-        // If the machine is already visible, we make the new wheel visible.
+        // Si la máquina ya está visible,
+        // hacemos visible la nueva rueda
         if (visible) {
             wheel.makeVisible();
         }
         operationOk = true;
     }
 
-    // Remove a wheel
+    // Elimina una rueda
     public void delWheel(int pos) {
         if (wheels.isEmpty()) {
             operationOk = false;
@@ -74,7 +97,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    //Swap two wheels
+    // Intercambia dos ruedas
     public void swap(int wheel1, int wheel2) {
         if (wheels.isEmpty()) {
             operationOk = false;
@@ -82,7 +105,7 @@ public class SlotMachine {
             return;
         }
 
-        // First position
+        // Primera posición
         if (wheel1 < 1) {
             wheel1 = 1;
         }
@@ -91,7 +114,7 @@ public class SlotMachine {
             wheel1 = wheels.size();
         }
 
-        // Second position
+        // Segunda posición
         if (wheel2 < 1) {
             wheel2 = 1;
         }
@@ -107,7 +130,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    //Lock a wheel
+    // Bloquea una rueda
     public void lock(int wheel) {
         if (wheels.isEmpty()) {
             operationOk = false;
@@ -127,7 +150,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // Unlock a wheel
+    // Desbloquea una rueda
     public void unlock(int wheel) {
         if (wheels.isEmpty()) {
             operationOk = false;
@@ -147,7 +170,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // Add a symbol in a position
+    // Agrega un símbolo en una posición
     public void addSymbol(int pos, String color) {
         if (findSymbol(color) != null) {
             operationOk = false;
@@ -167,7 +190,7 @@ public class SlotMachine {
 
         symbols.add(pos - 1, symbol);
 
-        // Add the symbol to all the wheels
+        // Agrega el símbolo a todas las ruedas
         for (Wheel wheel : wheels) {
             wheel.addSymbol(pos, symbol);
         }
@@ -175,7 +198,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // Remove a symbol
+    // Elimina un símbolo
     public void delSymbol(String color) {
         Symbol symbol = findSymbol(color);
 
@@ -186,7 +209,7 @@ public class SlotMachine {
         }
         symbols.remove(symbol);
 
-        // Remove the symbol of all the wheels
+        // Elimina el símbolo de todas las ruedas
         for (Wheel wheel : wheels) {
             wheel.delSymbol(symbol);
         }
@@ -194,7 +217,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // Place a symbol on a wheel
+    // Coloca un símbolo en una rueda
     public void placeSymbol(int wheel, String symbol) {
         Symbol selected = findSymbol(symbol);
 
@@ -217,7 +240,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // Turn a wheel once
+    // Gira una rueda una vez
     public void spin(int wheel) {
         if (wheels.isEmpty()) {
             operationOk = false;
@@ -238,7 +261,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // Turn all the wheels once.
+    // Gira todas las ruedas una vez
     public void spin() {
         if (wheels.isEmpty()) {
             operationOk = false;
@@ -253,7 +276,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // Turn a wheel a number of steps
+    // Gira una rueda un número de pasos
     public void spin(int wheel, int steps) {
         if (wheels.isEmpty()) {
             operationOk = false;
@@ -269,20 +292,29 @@ public class SlotMachine {
             wheel = wheels.size();
         }
 
-        if (steps < 0) {
-            operationOk = false;
-            showError("The number of steps cannot be negative.");
-            return;
-        }
-
-        for (int i = 0; i < steps; i++) {
-            wheels.get(wheel - 1).spin();
-        }
-
+        Wheel selected = wheels.get(wheel - 1); 
+        
+        if (steps > 0) { 
+            for (int i = 0; i < steps; i++) { 
+                selected.spin(); 
+            } 
+        } else if (steps < 0) { 
+            int actual = selected.getCurrent(); 
+            int cantidad = symbols.size(); 
+            int nueva = actual + steps; 
+            while (nueva < 1) { 
+                nueva = nueva + cantidad; 
+            } 
+            while (nueva > cantidad) { 
+                nueva = nueva - cantidad; 
+            }
+            Symbol symbol = selected.getSymbol(nueva); 
+            selected.placeSymbol(symbol); 
+        } 
         operationOk = true;
     }
 
-    // Leave the machine in a given configuration
+    // Deja la máquina en una configuración dada
     public void spin(String[] setSymbols) {
         if (setSymbols == null) {
             operationOk = false;
@@ -296,7 +328,7 @@ public class SlotMachine {
             return;
         }
 
-        // Check that all symbols exist
+        // Comprueba que todos los símbolos existan
         for (String color : setSymbols) {
             if (findSymbol(color) == null) {
                 operationOk = false;
@@ -305,7 +337,7 @@ public class SlotMachine {
             }
         }
 
-        // Place each wheel on the indicated symbol.
+        // Coloca cada rueda en el símbolo indicado
         for (int i = 0; i < wheels.size(); i++) {
             Symbol symbol = findSymbol(setSymbols[i]);
             wheels.get(i).placeSymbol(symbol);
@@ -314,7 +346,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // Returns the colors of the symbols
+    // Retorna los colores de los símbolos
     public String[] symbols() {
         String[] result = new String[symbols.size()];
 
@@ -325,12 +357,30 @@ public class SlotMachine {
         return result;
     }
 
-    // Returns the number of different symbols
+    // Retorna el número de símbolos diferentes
+    
     public int distinctSymbols() {
-        return symbols.size();
+        String[] configuration = configuration();
+        int different = 0;
+    
+        for (int i = 0; i < configuration.length; i++) {
+            boolean found = false;
+    
+            for (int j = 0; j < i; j++) {
+                if (configuration[i].equals(configuration[j])) {
+                    found = true;
+                }
+            }
+    
+            if (!found) {
+                different++;
+            }
+        }
+    
+        return different;
     }
 
-    // Returns to the current configuration
+    // Retorna la configuración actual
     public String[] configuration() {
         String[] result = new String[wheels.size()];
 
@@ -346,7 +396,7 @@ public class SlotMachine {
         return result;
     }
 
-    // Check if all wheels display the same symbol
+    // Comprueba si todas las ruedas muestran el mismo símbolo
     public boolean isJackpot() {
         if (wheels.isEmpty()) {
             return false;
@@ -363,7 +413,7 @@ public class SlotMachine {
         return true;
     }
 
-    // It makes the machine visible.
+    // Hace visible la máquina
     public void makeVisible() {
         visible = true;
         for (Wheel wheel : wheels) {
@@ -372,7 +422,7 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // It makes the machine invisible.
+    // Hace invisible la máquina
     public void makeInvisible() {
         for (Wheel wheel : wheels) {
             wheel.makeInvisible();
@@ -381,17 +431,17 @@ public class SlotMachine {
         operationOk = true;
     }
 
-    // It comes out of the machine
+    // Sale de la maquina
     public void exit() {
         System.exit(0);
     }
 
-    // Indicate whether the last operation was correct
+    // Indica si la última operación fue correcta
     public boolean ok() {
         return operationOk;
     }
 
-    // Find a symbol by color
+    // Busca un símbolo por color
     private Symbol findSymbol(String color) {
         for (Symbol symbol : symbols) {
             if (symbol.getColor().equals(color)) {
@@ -401,10 +451,11 @@ public class SlotMachine {
         return null;
     }
 
-    // Displays an error message if the machine is visible
+    // Muestra un mensaje de error si la máquina está visible
     private void showError(String message) {
         if (visible) {
             JOptionPane.showMessageDialog(null, message);
         }
     }
 }
+
