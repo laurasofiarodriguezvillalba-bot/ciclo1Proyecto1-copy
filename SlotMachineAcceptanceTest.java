@@ -4,30 +4,29 @@ import org.junit.Test;
 public class SlotMachineAcceptanceTest {
     @Test
     public void acceptanceTest1() {
-        // 1. Create the machine
+        // Create the machine
         SlotMachine machine = new SlotMachine();
 
-        // 2. Add symbols
+        // Add symbols
         machine.addSymbol(1, "red");
         machine.addSymbol(2, "blue");
         machine.addSymbol(3, "green");
     
-        // 3. Add three wheels
+        // Add three wheels
         machine.addWheel(1);
         machine.addWheel(2);
         machine.addWheel(3);
         
-        machine.makeVisible();
+        //machine.makeVisible();
 
-        // 4. Set initial configuration
+        // Set initial configuration
         machine.spin(new String[]{"red", "blue", "green"});
-
         assertArrayEquals(
             new String[]{"red", "blue", "green"},
             machine.configuration()
         );
 
-        // 5. Lock the first wheel
+        // Lock the first wheel
         machine.lock(1);
 
         // Trying to turn a locked wheel
@@ -39,10 +38,10 @@ public class SlotMachineAcceptanceTest {
             machine.configuration()
         );
 
-        // 6. Unlock the first wheel
+        // Unlock the first wheel
         machine.unlock(1);
 
-        // 7. Turn the first wheel two steps
+        // Turn the first wheel two steps
         machine.spin(1, 2);
 
         assertArrayEquals(
@@ -50,18 +49,17 @@ public class SlotMachineAcceptanceTest {
             machine.configuration()
         );
 
-        // 8. Set a new configuration
+        // Set a new configuration
         machine.spin(new String[]{"red", "red", "red"});
-
         assertArrayEquals(
             new String[]{"red", "red", "red"},
             machine.configuration()
         );
 
-        // 9. Check jackpot
+        // Check jackpot
         assertTrue(machine.isJackpot());
 
-        // 10. Swap the first and third wheels
+        // Swap the first and third wheels
         machine.swap(1, 3);
 
         // Since they all have red in them, it's still a jackpot.
@@ -69,16 +67,16 @@ public class SlotMachineAcceptanceTest {
             new String[]{"red", "red", "red"},
             machine.configuration()
         );
-
         assertTrue(machine.isJackpot());
 
-        // 11. Try a different configuration
+        // Try a different configuration
         machine.spin(new String[]{"green", "blue", "red"});
 
         assertFalse(machine.isJackpot());
 
-        // 12. Verify that the last operation was correct
+        // Verify that the last operation was correct
         assertTrue(machine.ok());
+
     }
     
     @Test
@@ -98,7 +96,7 @@ public class SlotMachineAcceptanceTest {
         machine.addWheel(3);
         machine.addWheel(4);
         
-        machine.makeVisible();
+        //machine.makeVisible();
     
         // 4. Set initial configuration
         machine.spin(new String[]{"red", "blue", "green", "yellow"});
@@ -156,5 +154,24 @@ public class SlotMachineAcceptanceTest {
             new String[]{"yellow", "red", "yellow", "red"},
             machine.configuration()
         );
+    }
+     @Test
+    public void acceptanceShouldSolveMarathon() {
+        SlotMachineContest contest = new SlotMachineContest();
+        int[][] solution = contest.solve(3);
+        assertNotNull(solution);
+        assertTrue(solution.length > 0);
+        for (int i = 0; i < solution.length; i++) {
+            assertTrue(solution[i][0] >= 1);
+            assertTrue(solution[i][0] <= 3);
+        }
+    }
+
+    @Test
+    public void acceptanceShouldSimulateSolution() {
+        SlotMachineContest contest = new SlotMachineContest();
+        contest.solve(3);
+        contest.simulate(3);
+        assertTrue(true);
     }
 }
