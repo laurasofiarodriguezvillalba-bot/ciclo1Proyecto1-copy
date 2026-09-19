@@ -10,7 +10,7 @@ public class Wheel {
     private int yPosition;
     private boolean visible;
 
-    //Crea una rueda en una posición
+    //Create a wheel in a position
     public Wheel(int x, int y) {
         symbols = new ArrayList<Symbol>();
         current = 1;
@@ -25,7 +25,7 @@ public class Wheel {
         currentCircle = null;
     }
         
-    // Agrega un símbolo en una posición
+    // Add a symbol in a position
     public void addSymbol(int pos, Symbol symbol) {
         if (pos < 1) {
             pos = 1;
@@ -36,7 +36,7 @@ public class Wheel {
         symbols.add(pos - 1, symbol);
     }
 
-    // Elimina un símbolo
+    // Delete a symbol
     public void delSymbol(Symbol symbol) {
     
         symbols.remove(symbol);
@@ -53,7 +53,7 @@ public class Wheel {
         updateCircle();
     }
 
-    // Coloca un símbolo como símbolo actual
+    // Place a symbol as the current symbol
     public void placeSymbol(Symbol symbol) {
         int position = symbols.indexOf(symbol);
         if (position != -1) {
@@ -62,7 +62,7 @@ public class Wheel {
         }
     }
 
-    // Gira la rueda una posición
+    // Turn the wheel one position
     public void spin() {
         if (!symbols.isEmpty() && !locked) {
             current++;
@@ -73,12 +73,12 @@ public class Wheel {
         }
     }
 
-    // Retorna la posición actual
+    // Returns the current position
     public int getCurrent() {
         return current;
     }
 
-    // Retorna el símbolo de una posición
+    // Returns the symbol of a position
     public Symbol getSymbol(int pos) {
         if (symbols.isEmpty()) {
             return null;
@@ -92,22 +92,22 @@ public class Wheel {
         return symbols.get(pos - 1);
     }
 
-    // Bloquea la rueda
+    // Block the wheel
     public void lock() {
         locked = true;
     }
 
-    // Desbloquea la rueda
+    // Unlock the wheel
     public void unlock() {
         locked = false;
     }
 
-    // Indica si la rueda está bloqueada
+    // Indicate if the wheel is locked
     public boolean isLocked() {
         return locked;
     }
 
-    // Hace visibles los símbolos
+    // Makes the symbols visible
     public void makeVisible() {
         visible = true;
         body.makeVisible();
@@ -115,7 +115,7 @@ public class Wheel {
         
     }
 
-    // Hace invisibles los símbolos
+    // Makes the symbols invisible
     public void makeInvisible() {
         body.makeInvisible();
         if (currentCircle != null) {
@@ -123,7 +123,7 @@ public class Wheel {
         }
     }
     
-    // Actualiza el círculo del símbolo actual.
+    // Update the current symbol's circle.
     private void updateCircle() {
         if (symbols.isEmpty()) {
             if (currentCircle != null) {
