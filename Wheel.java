@@ -8,12 +8,14 @@ public class Wheel {
     private Circle currentCircle;
     private int xPosition;
     private int yPosition;
+    private boolean visible;
 
-    //Create a wheel in a position
+    //Crea una rueda en una posición
     public Wheel(int x, int y) {
         symbols = new ArrayList<Symbol>();
         current = 1;
-        locked = false;        
+        locked = false; 
+        visible = false;
         xPosition = x;
         yPosition = y;
         body = new Rectangle();
@@ -23,7 +25,7 @@ public class Wheel {
         currentCircle = null;
     }
         
-    // Add a symbol in a position
+    // Agrega un símbolo en una posición
     public void addSymbol(int pos, Symbol symbol) {
         if (pos < 1) {
             pos = 1;
@@ -34,7 +36,7 @@ public class Wheel {
         symbols.add(pos - 1, symbol);
     }
 
-    // Remove a symbol
+    // Elimina un símbolo
     public void delSymbol(Symbol symbol) {
     
         symbols.remove(symbol);
@@ -51,7 +53,7 @@ public class Wheel {
         updateCircle();
     }
 
-    // Set a symbol as the current symbol
+    // Coloca un símbolo como símbolo actual
     public void placeSymbol(Symbol symbol) {
         int position = symbols.indexOf(symbol);
         if (position != -1) {
@@ -60,7 +62,7 @@ public class Wheel {
         }
     }
 
-    // Turn the wheel one position
+    // Gira la rueda una posición
     public void spin() {
         if (!symbols.isEmpty() && !locked) {
             current++;
@@ -71,12 +73,12 @@ public class Wheel {
         }
     }
 
-    // Returns to current position
+    // Retorna la posición actual
     public int getCurrent() {
         return current;
     }
 
-    // Returns the symbol of a position
+    // Retorna el símbolo de una posición
     public Symbol getSymbol(int pos) {
         if (symbols.isEmpty()) {
             return null;
@@ -90,29 +92,30 @@ public class Wheel {
         return symbols.get(pos - 1);
     }
 
-    // Lock the wheel
+    // Bloquea la rueda
     public void lock() {
         locked = true;
     }
 
-    // Unlock the wheel
+    // Desbloquea la rueda
     public void unlock() {
         locked = false;
     }
 
-    // Indicates if the wheel is locked
+    // Indica si la rueda está bloqueada
     public boolean isLocked() {
         return locked;
     }
 
-    // It makes the symbols visible.
+    // Hace visibles los símbolos
     public void makeVisible() {
+        visible = true;
         body.makeVisible();
         updateCircle();
         
     }
 
-    //It makes the symbols invisible.
+    // Hace invisibles los símbolos
     public void makeInvisible() {
         body.makeInvisible();
         if (currentCircle != null) {
@@ -120,7 +123,7 @@ public class Wheel {
         }
     }
     
-    // Update the circle of the current symbol.
+    // Actualiza el círculo del símbolo actual.
     private void updateCircle() {
         if (symbols.isEmpty()) {
             if (currentCircle != null) {
@@ -142,6 +145,10 @@ public class Wheel {
         int circleY = yPosition + 12;
         currentCircle.moveHorizontal(circleX - 20);
         currentCircle.moveVertical(circleY - 15);
-        currentCircle.makeVisible();
+        if (visible) {
+            currentCircle.makeVisible();
+        }
     }
 }
+    
+
