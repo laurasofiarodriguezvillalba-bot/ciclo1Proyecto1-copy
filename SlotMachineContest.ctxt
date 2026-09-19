@@ -1,0 +1,16 @@
+#BlueJ class context
+#Sat Sep 19 16:21:34 COT 2026
+comment0.target=SlotMachineContest
+comment1.params=n
+comment1.target=int[][] solve(int)
+comment2.params=wheel n
+comment2.target=int[] exploreWheel(int, int)
+comment3.params=withTarget withReference
+comment3.target=int findTarget(int[], int[])
+comment4.params=wheel steps
+comment4.target=void rotate(int, int)
+comment5.params=target current n
+comment5.target=int difference(int, int, int)
+comment6.params=n
+comment6.target=void simulate(int)
+numComments=7

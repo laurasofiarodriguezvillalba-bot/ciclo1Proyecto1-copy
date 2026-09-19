@@ -1,0 +1,9 @@
+#BlueJ class context
+#Sat Sep 19 16:21:35 COT 2026
+comment0.target=SlotMachineContestTest
+comment1.target=void shouldSolveThreeWheels()
+comment2.target=void shouldNotReturnInvalidWheel()
+comment3.target=void shouldSimulateThreeWheels()
+comment4.target=void shouldNotReuseSolutionForAnotherN()
+comment4.text=\r\n Should not\:\r\n reuse a solution when the number of wheels changes.\r\n
+numComments=5
