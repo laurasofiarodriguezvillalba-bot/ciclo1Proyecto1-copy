@@ -81,16 +81,16 @@ public class SlotMachineAcceptanceTest {
     
     @Test
     public void acceptanceTest2() {
-        // 1. Create the machine
+        // Create the machine
         SlotMachine machine = new SlotMachine();
     
-        // 2. Add symbols
+        // Add symbols
         machine.addSymbol(1, "red");
         machine.addSymbol(2, "blue");
         machine.addSymbol(3, "green");
         machine.addSymbol(4, "yellow");
     
-        // 3. Add four wheels
+        // Add four wheels
         machine.addWheel(1);
         machine.addWheel(2);
         machine.addWheel(3);
@@ -98,7 +98,7 @@ public class SlotMachineAcceptanceTest {
         
         //machine.makeVisible();
     
-        // 4. Set initial configuration
+        // Set initial configuration
         machine.spin(new String[]{"red", "blue", "green", "yellow"});
     
         assertArrayEquals(
@@ -106,7 +106,7 @@ public class SlotMachineAcceptanceTest {
             machine.configuration()
         );
     
-        // 5. Turn the second wheel three steps
+        // Turn the second wheel three steps
         machine.spin(2, 3);
     
         assertArrayEquals(
@@ -114,19 +114,19 @@ public class SlotMachineAcceptanceTest {
             machine.configuration()
         );
     
-        // 6. Lock the third wheel
+        // Lock the third wheel
         machine.lock(3);
     
         // Try to turn the third wheel
         machine.spin(3, 2);
     
-        // No debe cambiar porque está bloqueada
+        // It shouldn't change because it's locked
         assertArrayEquals(
             new String[]{"red", "red", "green", "yellow"},
             machine.configuration()
         );
     
-        // 7. Unlock the third wheel
+        // Unlock the third wheel
         machine.unlock(3);
     
         // Turn it once
@@ -137,7 +137,7 @@ public class SlotMachineAcceptanceTest {
             machine.configuration()
         );
     
-        // 8. Swap the first and fourth wheels
+        // Swap the first and fourth wheels
         machine.swap(1, 4);
     
         assertArrayEquals(
@@ -145,7 +145,7 @@ public class SlotMachineAcceptanceTest {
             machine.configuration()
         );
     
-        // 9. Trying to set a configuration with a symbol that does NOT exist
+        // Trying to set a configuration with a symbol that does NOT exist
         machine.spin(new String[]{"red", "purple", "yellow", "blue"});
         assertFalse(machine.ok());
     
