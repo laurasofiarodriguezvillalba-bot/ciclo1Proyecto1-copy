@@ -1,0 +1,8 @@
+#BlueJ class context
+#Sat Sep 19 16:21:33 COT 2026
+comment0.target=SlotMachineAcceptanceTest
+comment1.target=void acceptanceTest1()
+comment2.target=void acceptanceTest2()
+comment3.target=void acceptanceShouldSolveMarathon()
+comment4.target=void acceptanceShouldSimulateSolution()
+numComments=5
