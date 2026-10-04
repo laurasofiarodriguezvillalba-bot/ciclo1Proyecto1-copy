@@ -1,0 +1,8 @@
+#BlueJ class context
+#Sun Oct 04 08:48:28 COT 2026
+comment0.target=LeftyWheel
+comment1.params=x y
+comment1.target=LeftyWheel(int, int)
+comment2.params=left
+comment2.target=void copyLeftState(Wheel)
+numComments=3

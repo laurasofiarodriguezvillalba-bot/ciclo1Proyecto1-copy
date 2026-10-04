@@ -1,0 +1,8 @@
+#BlueJ class context
+#Sun Oct 04 10:59:29 COT 2026
+comment0.target=SlotMachineContestTest
+comment1.target=void shouldSolveThreeWheels()
+comment2.target=void shouldNotReturnInvalidWheel()
+comment3.target=void shouldSimulateThreeWheels()
+comment4.target=void shouldNotReuseSolutionForAnotherN()
+numComments=5

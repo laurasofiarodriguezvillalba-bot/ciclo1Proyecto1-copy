@@ -1,0 +1,24 @@
+#BlueJ class context
+#Sun Oct 04 08:48:28 COT 2026
+comment0.target=SlotMachineC4Test
+comment1.target=void shouldAddNormalSymbol()
+comment10.target=void shouldUseSpecialSymbolInWheel()
+comment11.target=void shouldSpinEphemeralSymbol()
+comment12.target=void shouldSelectShySymbol()
+comment13.target=void shouldSpinSpecialSymbol()
+comment14.target=void shouldDeleteSymbol()
+comment15.target=void shouldAddRebelWheel()
+comment16.target=void shouldSpinRebelWheel()
+comment17.target=void shouldNotLockRebelWheel()
+comment18.target=void shouldNotDeleteRebelWheel()
+comment19.target=void shouldNotSwapRebelWheel()
+comment2.target=void shouldAddEphemeralSymbol()
+comment20.target=void shouldSpinRebelAfterLockAttempt()
+comment3.target=void shouldAddShySymbol()
+comment4.target=void shouldAddSpecialSymbol()
+comment5.target=void shouldNotAddRepeatedSymbol()
+comment6.target=void shouldPlaceSymbol()
+comment7.target=void shouldUseNormalSymbolInWheel()
+comment8.target=void shouldUseEphemeralSymbolInWheel()
+comment9.target=void shouldUseShySymbolInWheel()
+numComments=21

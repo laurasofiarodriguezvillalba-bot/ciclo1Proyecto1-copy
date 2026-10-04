@@ -1,0 +1,12 @@
+#BlueJ class context
+#Sun Oct 04 08:48:24 COT 2026
+comment0.target=Symbol
+comment1.params=color
+comment1.target=Symbol(java.lang.String)
+comment2.target=java.lang.String getColor()
+comment3.target=void spin()
+comment4.target=void select()
+comment5.target=int getSize()
+comment6.target=boolean isVisible()
+comment7.target=java.lang.String getShape()
+numComments=8

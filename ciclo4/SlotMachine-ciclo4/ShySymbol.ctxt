@@ -1,0 +1,8 @@
+#BlueJ class context
+#Sun Oct 04 08:48:28 COT 2026
+comment0.target=ShySymbol
+comment1.params=color
+comment1.target=ShySymbol(java.lang.String)
+comment2.target=boolean isVisible()
+comment3.target=void select()
+numComments=4

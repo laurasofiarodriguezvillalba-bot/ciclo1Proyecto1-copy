@@ -1,0 +1,7 @@
+#BlueJ class context
+#Sun Oct 04 08:48:24 COT 2026
+comment0.target=SpecialSymbol
+comment1.params=color
+comment1.target=SpecialSymbol(java.lang.String)
+comment2.target=java.lang.String getShape()
+numComments=3

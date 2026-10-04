@@ -1,0 +1,9 @@
+#BlueJ class context
+#Sun Oct 04 08:48:28 COT 2026
+comment0.target=RebelWheel
+comment1.params=x y
+comment1.target=RebelWheel(int, int)
+comment2.target=boolean canDelete()
+comment3.target=boolean canSwap()
+comment4.target=boolean canLock()
+numComments=5
